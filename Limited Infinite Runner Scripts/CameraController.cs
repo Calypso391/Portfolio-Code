@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
 
     public static bool dead = false;
     private GameObject tryAgain;
+    public static GameObject controls;
     private TextMeshProUGUI scoreText;
     private float score = 0;
 
@@ -31,6 +32,10 @@ public class CameraController : MonoBehaviour
 
         tryAgain = GameObject.Find("Try Again");
         tryAgain.SetActive(false);
+
+        controls = GameObject.Find("Controls");
+        controls.SetActive(true);
+
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         dead = false;
     }
@@ -41,7 +46,6 @@ public class CameraController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("Calista Test");
 
-        if((int)Input.GetAxisRaw("Horizontal") != 0) ChangeRange((int)Input.GetAxisRaw("Horizontal"));
         bufferTimer -= Time.deltaTime;
 
         if (!dead)
@@ -64,11 +68,6 @@ public class CameraController : MonoBehaviour
             
         transform.position = new Vector3(cameraPos[index], cameraY, cameraZ);
         subCamera.rect = new Rect(0, 0, viewportSize[index], 1);
-
-        if (index == cameraPos.Length - 2)
-        { 
-        
-        }
 
 
         if (index == cameraPos.Length - 1)

@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
                     SEM.PlayClip(1);
                     SEM.PlaySubClip(0);
                 }
+                if (CameraController.controls.activeSelf) CameraController.controls.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 {
                     SEM.PlaySubClip(0);
                 }
+                if (CameraController.controls.activeSelf) CameraController.controls.SetActive(false);
             }
         }
 
